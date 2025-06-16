@@ -1,0 +1,31 @@
+{
+  "name": "blacket",
+  "version": "3.0.0",
+  "description": "A Blooket inspired game with countless additional features",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "types",
+    "common",
+    "core",
+    "discord-bot"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run start:dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "install:all": "npm install && npm run install:submodules",
+    "install:submodules": "cd frontend && npm install && cd ../backend && npm install && cd ../types && npm install && cd ../common && npm install && cd ../core && npm install && cd ../discord-bot && npm install",
+    "setup": "git submodule update --init --recursive && npm run install:all"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
